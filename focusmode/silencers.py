@@ -3,6 +3,8 @@ from subprocess import Popen, PIPE
 
 
 def hide_app(app):
+    """Run an AppleScript to hide the specified app. Mac only!"""
+
     hide_apple_script = '''
         tell application "Finder"
             if exists application process "{0}" then
@@ -19,6 +21,8 @@ def hide_app(app):
 
 
 def snooze_slack_workspace(time, token):
+    """Set Snooze in the workspace associated with the token."""
+
     snooze_api_url = 'https://slack.com/api/dnd.setSnooze?num_minutes={}&pretty=1'.format(time)
     headers = {'Authorization': 'access_token {}'.format(token)}
     data = [('token', token)]

@@ -8,11 +8,13 @@ APPS_TO_HIDE = ['Mail', 'Slack', 'Skype for Business']
 SLACK_WORKSPACES = {
     'kinkeads+': os.environ["SLACK_KINKEADS_LAURA_SNOOZER_TOKEN"],
 }
+DEFAULT_SNOOZE_TIME = 60
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('time', nargs='?', type=int, default=60, help="Time duration for Do Not Disturb, in minutes")
+    parser.add_argument('time', nargs='?', type=int, default=DEFAULT_SNOOZE_TIME,
+                        help="Time duration for Do Not Disturb, in minutes")
     args = parser.parse_args()
 
     for app in APPS_TO_HIDE:
